@@ -10,3 +10,5 @@ COPY app /app
 
 CMD ["python", "app.py"]
 
+EXPOSE 5099
+

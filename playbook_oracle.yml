@@ -1,0 +1,23 @@
+- name: Deploy Flask app with Docker
+  hosts: oracle
+  become: true
+
+  tasks:
+  - name: Clone GitHub repository
+    git:
+      repo: https://github.com/lucaslimafernandes/Flask_DA.git
+      dest: /home/ansible/Flask_DA
+      accept_hostkey: yes
+      force: yes
+      #password: 'senha'
+        
+  - name: Build Docker image
+    command: docker build -t flask-app /home/ansible/Flask_DA/
+
+  - name: Run Docker container
+    docker_container:
+      name: flask-app-container
+      image: flask-app
+      ports:
+        - "5099:5099"
+      state: started
