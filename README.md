@@ -11,15 +11,17 @@ A simple (very simple) application to learn to use Docker and Ansible to future 
 
 Install ansible:
 
-    pip install ansible
+    apt install ansible
 
 Verify:
 
-    pip show ansible
+    ansible --version
 
 Running:
 
     ansible-playbook --ask-become-pass playbook.yml
+
+    ansible-playbook playbook.yml
 
 Finally:
 
