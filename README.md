@@ -135,7 +135,9 @@ Copy this value, and then paste it into this same file in Ansible user:
 
 An observation here: maybe you need to change a user to access the home of another user
 
-2. Now, configure the ssh config, search the 'PasswordAuthentication' and make sure that is just like that:
+2. Now, configure the ssh config on /etc/ssh/sshd_config, search the 'PasswordAuthentication' and make sure that is just like that:
+
+> sudo nano /etc/ssh/sshd_config
 
 > PasswordAuthentication no
 
