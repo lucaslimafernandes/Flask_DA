@@ -20,7 +20,7 @@ This tutorial has been written by (me) and for Linux users, enjoy it.
 
 3. Execute
 
-Note: He asks you for your passwork (to assume a root user)
+Note: He asks you for your password (to assume a root user)
 
 > ansible-playbook --ask-become-pass playbook.yml
 
@@ -60,7 +60,7 @@ If you are using Linux for the first time, you need to generate a pair of SSH Ke
 
 > <key_type> <public_key> <optional_comment>
 
-For exemple:
+For example:
 
 > ssh-rsa AAAAB3BzaC1yc2EAAAADAQABAAABAQD9BRwrUiLDki6P0+jZhwsjS2muM......yXDus/5DQ== rsa-key-20201202
 
@@ -103,23 +103,27 @@ Choose the best option for you!
 
 1. Now, you're on your Ubuntu server
 
-2. Create a new user to use Ansible, my suggestion is a 'ansible' user, LOL
+2. First, update the repositories
+
+> sudo apt update
+
+3. Create a new user to use Ansible, my suggestion is a 'ansible' user, LOL
 
 > sudo adduser ansible
 
-3. Set the privileges in sudoers...... first access the sudoers
+4. Set the privileges in sudoers...... first access the sudoers
 
 > sudo nano /etc/sudoers
 
-4. Locate the User privilege specification, there is a specification to root user, just like that:
+5. Locate the User privilege specification, there is a specification to root user, just like that:
 
 root ALL=(ALL:ALL) ALL
 
-5. Add a line after the root line
+6. Add a line after the root line
 
 > ansible ALL=(ALL:ALL) NOPASSWD:ALL
 
-6. In this configuration, we're saying to Linux that, when you need to scale your privileges, just do it, don't question me about the password.
+7. In this configuration, we're saying to Linux that, when you need to scale your privileges, just do it, don't question me about the password.
 
 #### Other basic configurations in your Oracle instance
 
@@ -162,6 +166,12 @@ An observation here: maybe you need to change a user to access the home of anoth
     [oracle:vars]
     ansible_user=ansible
 
+If, after you installed Ansible, it doesn't create the host's file
+
+So, you need to create the inventory.ini file with the same information, and when you run the Ansible, you have to pass the inventory argument:
+
+> ansible-playbook -i inventory.ini playbook.yml
+
 3. Test to verify
 
 > ansible Any_Name_You_Want_of_Your_Oracle_Instance -m ping
@@ -182,9 +192,23 @@ You need to receive a successful response: ping pong.
 
 #### Testing
 
-1. Open your internet browser
+1. In the terminal of your instance, type:
 
-2. Digit the ip address from our instance with the 5099 port
+> sudo docker ps
+
+And you see the docker running:
+
+| CONTAINER ID 	|   IMAGE   	| COMMAND         	| CREATED        	| STATUS        	| PORTS                  	| NAMES               	|
+|:------------:	|:---------:	|-----------------	|----------------	|---------------	|------------------------	|---------------------	|
+| 87fc2177167a 	| flask-app 	| "python app.py" 	| 56 minutes ago 	| Up 56 minutes 	| 0.0.0.0:5099->5099/tcp 	| flask-app-container 	|
+
+Sooooo Great, it's running...
+
+Now...
+
+2. Open your internet browser
+
+3. Digit the IP address from our instance with the 5099 port
 
 > 142.250.218.14:5099
 
@@ -192,7 +216,7 @@ The successful message:
 
 > "Hello, Flask app!"
 
-If you don't receive it, follow [this tutorial to create an ingress rule for your VCN](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/flask-on-ubuntu/01oci-ubuntu-flask-summary.htm#ariaid-title7)
+If you don't receive it, means that you need to create network rules... follow [this tutorial to create an ingress rule for your VCN](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/flask-on-ubuntu/01oci-ubuntu-flask-summary.htm#ariaid-title7)
 
 
 #### Any question?
