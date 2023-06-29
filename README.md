@@ -44,7 +44,7 @@ The requirements for the following are:
 
 #### First step - SSH
 
-If you using Linux for the first time, you need to generate a pair of SSH Keygens - [tutorial](https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux)
+If you are using Linux for the first time, you need to generate a pair of SSH Keygens - [tutorial](https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux)
 
 1. Open your terminal (ctrl + alt + t normally in Linux)
 
@@ -190,7 +190,7 @@ The successful message:
 
 > "Hello, Flask app!"
 
-If don't receive, follow [this tutorial to create an ingress rule for your VCN](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/flask-on-ubuntu/01oci-ubuntu-flask-summary.htm#ariaid-title7)
+If you don't receive it, follow [this tutorial to create an ingress rule for your VCN](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/flask-on-ubuntu/01oci-ubuntu-flask-summary.htm#ariaid-title7)
 
 
 #### Any question?
