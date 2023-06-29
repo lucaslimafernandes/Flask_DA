@@ -22,7 +22,7 @@ This tutorial has been written by (me) and for Linux users, enjoy it.
 
 Note: He asks you for your password (to assume a root user)
 
-> ansible-playbook --ask-become-pass playbook.yml
+> ansible-playbook --ask-become-pass playbook_local.yml
 
 
 

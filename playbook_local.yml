@@ -4,6 +4,17 @@
   become: true
 
   tasks:
+    - name: Check if Docker is installed
+      command: docker --version
+      ignore_errors: true
+      register: docker_check
+
+    - name: Install Docker
+      apt:
+        name: docker*
+        state: present
+      when: docker_check.rc != 0
+
     - name: Clone GitHub repository
       git:
         repo: https://github.com/lucaslimafernandes/Flask_DA.git
