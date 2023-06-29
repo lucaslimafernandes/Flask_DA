@@ -5,36 +5,36 @@
 
 Flask, Docker, Ansible
 
-A simple (very simple) application to learn to use Docker and Ansible for the future uses from my repositories.
+A simple (very simple) application to learn to use Docker and Ansible for future uses from my repositories.
 
-## How to
-
-Install ansible:
-
-    apt install ansible
-
-Verify:
-
-    ansible --version
-
-Running:
-
-    ansible-playbook --ask-become-pass playbook.yml
-
-    ansible-playbook playbook.yml
-
-Finally:
-
-    http://localhost:5099/
+This tutorial has been written by and for Linux users, enjoy it
 
 
-## Step by Step
+## Executing in localhost
+
+1. In your local machine, install Ansible:
+
+> apt install ansible
+
+2. Download the playbook_local.yml from this repository
+
+3. Execute
+
+Note: He asks you for your passwork (to assume a root user)
+
+> ansible-playbook --ask-become-pass playbook.yml
+
+
+
+## Executing in a cloud server
+
+### Step by Step
 
 Hello people, in this section we have a step-by-step guided tutorial
 
-### What you need
+#### What you need
 
-The requirements for following are:
+The requirements for the following are:
 
 1. A Linux Laptop/Computer
 
@@ -42,11 +42,11 @@ The requirements for following are:
 
 3. Your time
 
-### First step - SSH
+#### First step - SSH
 
 If you using Linux for the first time, you need to generate a pair of SSH Keygens - [tutorial](https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux)
 
-1. Open your terminal (ctrl + alt + t in commom linux)
+1. Open your terminal (ctrl + alt + t normally in Linux)
 
 2. Put the command above
 
@@ -67,7 +67,7 @@ For exemple:
 4. copy the keygen, we going to use it.
 
 
-### Oracle cloud instance
+#### Oracle cloud instance
 
 Now, we need a compute instance in Oracle Cloud.
 
@@ -89,7 +89,7 @@ One observation here: Choose the 'Paste public keys' option and paste your publi
 
 Great, now you have an easy access
 
-### Some basic configurations in your Oracle Instance
+#### Some basic configurations in your Oracle Instance
 
 So, now we access using your local terminal
 
@@ -121,7 +121,7 @@ root ALL=(ALL:ALL) ALL
 
 6. In this configuration, we're saying to Linux that, when you need to scale your privileges, just do it, don't question me about the password.
 
-### Other basic configurations in your Oracle instance
+#### Other basic configurations in your Oracle instance
 
 So, to make short's steps, where we go...
 
@@ -129,7 +129,7 @@ So, to make short's steps, where we go...
 
 > cat /home/ubuntu/.ssh/authorized_keys
 
-Copy this value, and then paste it into this same file in ansible user:
+Copy this value, and then paste it into this same file in Ansible user:
 
 > nano /home/ansible/.ssh/authorized_keys
 
@@ -143,13 +143,13 @@ An observation here: maybe you need to change a user to access the home of anoth
 
 > sudo service ssh restart
 
-### Going to ansible
+#### Going to Ansible
 
-1. In your local machine, install ansible:
+1. In your local machine, install Ansible:
 
 > apt install ansible
 
-2. Configure ansible host's
+2. Configure Ansible host's
 
 > sudo nano /etc/ansible/hosts
 
@@ -162,13 +162,40 @@ An observation here: maybe you need to change a user to access the home of anoth
 
 3. Test to verify
 
-> ansible oracle -m ping
+> ansible Any_Name_You_Want_of_Your_Oracle_Instance -m ping
 
-You need receive a successful response: ping pong.
+You need to receive a successful response: ping pong.
+
+    Any_Name_You_Want_of_Your_Oracle_Instance | SUCCESS => {
+        "changed": false,
+        "ping": "pong"
+    }
+
+4. Download the playbook_oracle.yml from this repository
+
+5. Execute
+
+> ansible Any_Name_You_Want_of_Your_Oracle_Instance playbook_oracle.yml
 
 
+#### Testing
+
+1. Open your internet browser
+
+2. Digit the ip address from our instance with the 5099 port
+
+> 142.250.218.14:5099
+
+The successful message:
+
+> "Hello, Flask app!"
+
+If don't receive, follow [this tutorial to create an ingress rule for your VCN](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/flask-on-ubuntu/01oci-ubuntu-flask-summary.htm#ariaid-title7)
 
 
+#### Any question?
+
+1. Create a Issue
 
 
 

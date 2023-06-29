@@ -28,7 +28,6 @@
         dest: /home/ansible/Flask_DA
         accept_hostkey: yes
         force: yes
-        password: senha
 
     - name: Build Docker image
       command: docker build -t flask-app .
