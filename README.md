@@ -7,7 +7,7 @@ Flask, Docker, Ansible
 
 A simple (very simple) application to learn to use Docker and Ansible for future uses from my repositories.
 
-This tutorial has been written by and for Linux users, enjoy it
+This tutorial has been written by (me) and for Linux users, enjoy it.
 
 
 ## Executing in localhost
