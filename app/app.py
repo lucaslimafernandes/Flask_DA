@@ -10,6 +10,10 @@ def hello():
 def hehe():
     return 'nacional'
 
+@app.route('/teste/')
+def fn():
+    return 'retorno teste'
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5099)
 
