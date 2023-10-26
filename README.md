@@ -221,7 +221,8 @@ If you don't receive it, means that you need to create network rules... follow [
 
 #### Any question?
 
-1. Create a Issue
+1. Create a Issue to talk about
+
 
 
 
