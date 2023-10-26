@@ -224,8 +224,6 @@ If you don't receive it, means that you need to create network rules... follow [
 1. Create a Issue to talk about
 
 
-
-
 ## Contact
 
 Lucas Lima Fernandes
